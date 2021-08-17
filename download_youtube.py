@@ -33,7 +33,7 @@ def getFolderName(urls):
         if ("https://www.youtube.com/playlist?list=" in urls[0]):
             answer = ""
             while (answer != "n" and answer != "y"):
-                answer = input("Would you like to use an auto-generated name: (y/n) ")
+                answer = input("Would you like to use an auto-generated name: (Y/N) ").lower()
             doCustomName = answer == "n"
     if (doCustomName):
         folderName = input("What would you like the folder to be called: ")
@@ -51,7 +51,7 @@ def getDataType():
     # Returns - String of the answer
     answer = ""
     while (answer != "mp4" and answer != "mp3"):
-        answer = input("What data type do you want your videos in? Video (mp4) Audio (mp3): ")
+        answer = input("What data type do you want your videos in? Video (MP4) | Audio (MP3): ").lower()
     return answer
 
 def gatherURLS():
@@ -60,7 +60,7 @@ def gatherURLS():
     urlList = []
     answer = ""
     while (answer != "stop"):
-        answer = input("URL: ")
+        answer = input("URL/STOP: ").lower()
         if (answer != "stop"):
             urlList.append(answer)
     return urlList
@@ -68,11 +68,11 @@ def gatherURLS():
 def makeDirectories(folderName):
     # This method constructs the necessary folders needed by the program
     # Returns - None
-    paths = folderName.split("/")
+    paths = (outFolder + folderName).split("/")
     currentPath = ""
     for path in paths:
-        if (isdir(outFolder + currentPath + path + "/") == False):
-            os.mkdir(outFolder + currentPath + path + "/")
+        if (isdir(currentPath + path + "/") == False):
+            os.mkdir(currentPath + path + "/")
         currentPath = currentPath + path + "/"
 
 def validateURLS(urls):
@@ -142,7 +142,7 @@ def download_mp4_videos(urls, folderName):
     answer = ""
     index = 1
     while (answer != "n" and answer != "y"):
-        answer = input("Would you like to add indexes to keep these videos in order: (y/n) ")
+        answer = input("Would you like to add indexes to keep these videos in order: (Y/N) ").lower()
     for url in urls:
         yt = YouTube(url)
         aStream = yt.streams.filter(only_audio=True, file_extension='mp4')[0]
@@ -180,7 +180,7 @@ def download_mp3_videos(urls, folderName):
     answer = ""
     index = 1
     while (answer != "n" and answer != "y"):
-        answer = input("Would you like to add indexes to keep these videos in order: (y/n) ")
+        answer = input("Would you like to add indexes to keep these videos in order: (Y/N) ").lower()
     for url in urls:
         try:
             yt = YouTube(url)

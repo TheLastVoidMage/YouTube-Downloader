@@ -5,15 +5,15 @@ Written by Samuel Watson
 
 Written and tested with Python 3.8
 
-For this program to work you need to install
+For this program to work you need to install:
 
-Python
+  Python
 
-Git
+  Git
 
-Moviepy
+  Moviepy
 
-Pytube
+  Pytube
 
 
 # Notes

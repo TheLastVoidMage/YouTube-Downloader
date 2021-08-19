@@ -1,5 +1,5 @@
 # YouTube-Downloader
-This program allows you to download videos and playlists from YouTube
+This console program allows you to download videos and playlists from YouTube
 
 Written by Samuel Watson
 

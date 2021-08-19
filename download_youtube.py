@@ -60,7 +60,9 @@ def gatherURLS():
     urlList = []
     answer = ""
     while (answer != "stop"):
-        answer = input("URL/STOP: ").lower()
+        answer = input("URL/STOP: ")
+        if answer.lower() == "stop":
+            answer = answer.lower()
         if (answer != "stop"):
             urlList.append(answer)
     return urlList
@@ -87,6 +89,7 @@ def validateURLS(urls):
             request = requests.get(checkURL + url)
             if (request.status_code != 200):
                 goodRun = False
+                print(url + " was removed due to bad url")
                 urls.remove(url)
             else:
                 if ("https://www.youtube.com/watch?v=" in url):
